@@ -183,7 +183,7 @@
     </section>
 
     <section id="page3">
-        <h2 class="section-title">Kalkulator Kerugian Setahun</h2>
+        <h2 class="section-title">Kalkulator Kerugian Per Tahun</h2>
         <div class="calc-wrapper">
             <div class="calc-left">
                 <img src="uangmelayang.jpeg" alt="Kalkulator">
@@ -265,15 +265,42 @@
         }
 
         // Kalkulator
-        function calculate() {
-            const daily = document.getElementById('daily-loss').value;
-            const resBox = document.getElementById('res-box');
-            if(daily <= 0) return alert("Masukkan nominal!");
-            
-            const yearly = daily * 365;
-            const formatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(yearly);
-            resBox.innerHTML = `Total Uang Terbuang: <br><span style="font-size: 2.2rem;">${formatted}</span> <br><br><span style="font-size: 1rem; color: #555; font-weight: normal;">Uang ini setara dengan membeli Laptop Gaming atau Motor baru.</span>`;
-        }
+       function calculate() {
+
+    const daily = document.getElementById('daily-loss').value;
+    const resBox = document.getElementById('res-box');
+
+    if (daily <= 0) {
+        return alert("Masukkan nominal!");
+    }
+
+    const yearly = daily * 365;
+
+    const formatted = new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR'
+    }).format(yearly);
+
+    resBox.innerHTML = `
+        <div style="
+            font-size:2.5rem;
+            font-weight:800;
+            color:#c0392b;
+            margin-bottom:15px;
+        ">
+            ${formatted}
+        </div>
+
+        <div style="
+            font-size:1rem;
+            color:#555;
+            line-height:1.6;
+            font-weight:500;
+        ">
+            Jumlah kerugian jika dilakukan setiap hari selama satu tahun.
+        </div>
+    `;
+}
 
         // Bantuan
         function showHelp() {
